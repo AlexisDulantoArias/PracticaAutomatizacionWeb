@@ -4,7 +4,8 @@ Feature: Product - Store
   Scenario Outline: Validación del precio de un producto
     Given estoy en la página de la tienda
     And me logueo con mi usuario "<username>" y clave "<password>"
-    When navego a la categoria "<categoria>" y subcategoria "<subcategoria>"
+    When cambio el tipo de moneda a "<currency>"
+    And navego a la categoria "<category>" y subcategoria "<subcategory>"
     And agrego <unidades> unidades del primer producto al carrito
     Then valido en el popup la confirmación del producto agregado
     And valido en el popup que el monto total sea calculado correctamente
@@ -12,6 +13,7 @@ Feature: Product - Store
     Then valido el titulo de la pagina del carrito
     And vuelvo a validar el calculo de precios en el carrito
     Examples:
-      | username                | password         | categoria | subcategoria | unidades |
-      | alexisdulanto@gmail.com | AlexisDulanto123 | clothes   | men          | 2        |
-      | alexisdulanto@gmail.com | AlexisDulanto123 | cars      | men          | 2        |
+      | username                | password         | currency | category   | subcategory | unidades |
+      | alexisdulanto@gmail.com | AlexisDulanto123 | PEN      | clothes    | men         | 2        |
+      | nttdata@outlook.com     | 123456778        | USD      | accesorios | stationery  | 3        |
+      | alexisdulanto@gmail.com | AlexisDulanto123 | USD      | cars       | men         | 2        |
